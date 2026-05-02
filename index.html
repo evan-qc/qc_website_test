@@ -3,391 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Test Site</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* ---------- Brand tokens (Iris palette) ---------- */
-        :root {
-            --brand-charcoal: #0E1116;
-            --brand-iris: #5B4BCC;
-            --brand-amber: #F4B860;
-            --brand-linen: #F1EEE7;
-            --brand-white: #FFFFFF;
-        }
-
-        /* ---------- Dark theme (default) ---------- */
-        :root,
-        [data-theme="dark"] {
-            --bg-page: var(--brand-charcoal);
-            --bg-surface: #161a22;       /* one step up from charcoal */
-            --bg-card: #1c2030;          /* faint iris tint */
-            --bg-header: #0a0d12;        /* deeper than page for depth */
-            --bg-nav: #11151c;
-            --bg-nav-hover: rgba(91, 75, 204, 0.18);
-
-            --text-primary: #d8d6e3;
-            --text-muted: #8a8799;
-            --text-heading: var(--brand-linen);
-            --text-on-brand: var(--brand-white);
-
-            --border-soft: rgba(241, 238, 231, 0.08);
-            --border-strong: rgba(241, 238, 231, 0.14);
-
-            --accent: var(--brand-iris);
-            --accent-hover: #7666e0;
-            --accent-warm: var(--brand-amber);
-
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            --hero-gradient: linear-gradient(135deg, #5B4BCC 0%, #2a2070 60%, #0E1116 100%);
-            --hero-glow: radial-gradient(60% 80% at 80% 20%, rgba(244, 184, 96, 0.22), transparent 70%);
-        }
-
-        /* ---------- Light theme ---------- */
-        [data-theme="light"] {
-            --bg-page: var(--brand-linen);
-            --bg-surface: var(--brand-white);
-            --bg-card: #faf8f3;
-            --bg-header: var(--brand-charcoal);
-            --bg-nav: #1a1d26;
-            --bg-nav-hover: rgba(244, 184, 96, 0.18);
-
-            --text-primary: #2a2d36;
-            --text-muted: #6b6e78;
-            --text-heading: var(--brand-charcoal);
-            --text-on-brand: var(--brand-white);
-
-            --border-soft: rgba(14, 17, 22, 0.08);
-            --border-strong: rgba(14, 17, 22, 0.16);
-
-            --accent: var(--brand-iris);
-            --accent-hover: #4a3cb0;
-            --accent-warm: #d99835; /* amber pulled slightly darker for AA on linen */
-
-            --shadow: 0 8px 24px rgba(14, 17, 22, 0.08);
-            --hero-gradient: linear-gradient(135deg, #5B4BCC 0%, #7666e0 100%);
-            --hero-glow: radial-gradient(60% 80% at 80% 20%, rgba(244, 184, 96, 0.35), transparent 70%);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
-            font-feature-settings: "ss01", "cv11";
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-page);
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        /* Subtle grid texture in dark mode for "techy" feel */
-        [data-theme="dark"] body {
-            background-image:
-                radial-gradient(rgba(91, 75, 204, 0.08) 1px, transparent 1px);
-            background-size: 32px 32px;
-            background-position: 0 0;
-        }
-
-        header {
-            background: var(--bg-header);
-            color: var(--text-on-brand);
-            padding: 1.25rem 1.5rem;
-            text-align: center;
-            position: relative;
-            border-bottom: 1px solid var(--border-strong);
-        }
-
-        header h1 {
-            color: var(--text-on-brand);
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        header h1::before {
-            content: "";
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: var(--brand-amber);
-            border-radius: 2px;
-            margin-right: 0.6rem;
-            transform: translateY(-2px) rotate(45deg);
-            box-shadow: 0 0 12px rgba(244, 184, 96, 0.6);
-        }
-
-        header > p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 0.25rem;
-        }
-
-        .theme-toggle {
-            position: absolute;
-            top: 50%;
-            right: 1.5rem;
-            transform: translateY(-50%);
-            background: rgba(241, 238, 231, 0.06);
-            color: var(--text-on-brand);
-            border: 1px solid var(--border-strong);
-            padding: 0.5rem 0.9rem;
-            border-radius: 999px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.01em;
-            transition: background 0.2s ease, border-color 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(244, 184, 96, 0.12);
-            border-color: var(--brand-amber);
-        }
-
-        nav {
-            background: var(--bg-nav);
-            padding: 0.4rem 0;
-            border-bottom: 1px solid var(--border-soft);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        nav a {
-            color: var(--text-on-brand);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-radius: 6px;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        nav a:hover {
-            background: var(--bg-nav-hover);
-            color: var(--brand-amber);
-        }
-
-        main {
-            max-width: 900px;
-            margin: 2.5rem auto;
-            padding: 2.5rem;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-soft);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-
-        section {
-            margin-bottom: 2.5rem;
-        }
-
-        section:last-child {
-            margin-bottom: 0;
-        }
-
-        h1, h2, h3 {
-            color: var(--text-heading);
-            letter-spacing: -0.015em;
-        }
-
-        h2 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            padding-bottom: 0.6rem;
-            border-bottom: 1px solid var(--border-soft);
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        h2::before {
-            content: "";
-            width: 3px;
-            height: 18px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        h3 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-        }
-
-        .hero {
-            position: relative;
-            text-align: center;
-            padding: 3rem 2rem;
-            background: var(--hero-gradient);
-            color: var(--text-on-brand);
-            border-radius: 10px;
-            margin-bottom: 2.5rem;
-            overflow: hidden;
-            border: 1px solid var(--border-strong);
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: var(--hero-glow);
-            pointer-events: none;
-        }
-
-        .hero h2 {
-            border: none;
-            color: var(--brand-white);
-            font-size: 1.75rem;
-            justify-content: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero h2::before {
-            background: var(--brand-amber);
-            box-shadow: 0 0 10px rgba(244, 184, 96, 0.7);
-        }
-
-        .hero p {
-            position: relative;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 0;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid var(--border-soft);
-            border-left: 3px solid var(--accent);
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            border-left-color: var(--accent-warm);
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            background: var(--bg-header);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 2.5rem;
-            border-top: 1px solid var(--border-strong);
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: color 0.2s, border-color 0.2s;
-        }
-
-        a:hover {
-            color: var(--accent-warm);
-            border-bottom-color: var(--accent-warm);
-        }
-    </style>
+    <title>Quantify Consulting — Reclaim Clarity</title>
+    <meta name="description" content="We help businesses elevate operations through commercial digitalization — analytics, automation, and AI.">
+    <link rel="stylesheet" href="css/shared.css">
+    <script src="js/theme.js"></script>
 </head>
 <body>
-    <header>
-        <h1>My Test Website</h1>
-        <p>A simple GitHub Pages test site</p>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">🌙 Dark</button>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="index.html" class="brand">
+                <span class="brand-mark"></span>
+                <span class="brand-name">Quantify</span>
+            </a>
+            <nav class="site-nav">
+                <a href="data-analytics.html">Reporting & Analytics</a>
+                <a href="business-process-automation.html">Process Automation</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about.html">Our Team</a>
+                <a href="journal.html">Blog</a>
+                <a href="contact-us.html">Contact</a>
+                <a href="contact-us.html" class="cta">Free Consultation</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">🌙 Dark</button>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
     <main>
-        <section id="home" class="hero">
-            <h2>Welcome</h2>
-            <p>This is a basic test site hosted on GitHub Pages.</p>
-        </section>
-
-        <section id="about">
-            <h2>About</h2>
-            <p>This is a placeholder page used for testing GitHub Pages deployment. Replace this content with your own when you're ready.</p>
-            <p>The page is a single HTML file with inline CSS, so there are no extra dependencies to worry about.</p>
-        </section>
-
-        <section id="features">
-            <h2>Features</h2>
-            <div class="cards">
-                <div class="card">
-                    <h3>Responsive</h3>
-                    <p>Looks decent on phones, tablets, and desktops.</p>
-                </div>
-                <div class="card">
-                    <h3>Lightweight</h3>
-                    <p>Just one HTML file. No frameworks, no build step.</p>
-                </div>
-                <div class="card">
-                    <h3>Easy to Edit</h3>
-                    <p>Open in any text editor and start customizing.</p>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">Commercial Digitalization</span>
+                <h1>Reclaim <span class="accent-word">Clarity</span>.</h1>
+                <p class="lead">Elevate your business with analytics, automation, and AI that move the needle — not just the dashboard.</p>
+                <div class="hero-cta-row">
+                    <a href="contact-us.html" class="btn btn-amber">Free Consultation</a>
+                    <a href="case-studies.html" class="btn btn-ghost" style="color: var(--brand-white); border-color: rgba(255,255,255,0.3);">See Our Work</a>
                 </div>
             </div>
         </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
-            <p>GitHub: <a href="https://github.com/">github.com/yourusername</a></p>
+        <!-- Three pillars -->
+        <section class="section">
+            <div class="container">
+                <div class="pillars">
+                    <article class="pillar">
+                        <div class="pillar-icon">📊</div>
+                        <h3>Analytics</h3>
+                        <p>Unlock actionable insights and data-driven decisions with advanced analytics that reveal hidden opportunities, optimize performance, and fuel sustainable commercial growth.</p>
+                    </article>
+                    <article class="pillar">
+                        <div class="pillar-icon">⚙️</div>
+                        <h3>Automation</h3>
+                        <p>Streamline operations and eliminate inefficiencies through intelligent automation that accelerates processes, reduces costs, and frees your team for strategic work.</p>
+                    </article>
+                    <article class="pillar">
+                        <div class="pillar-icon">✦</div>
+                        <h3>AI</h3>
+                        <p>Harness the power of artificial intelligence to innovate faster, personalize customer experiences, predict trends, and transform your operations with smart, scalable solutions.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- We help you... -->
+        <section class="section" style="background: var(--bg-surface); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft);">
+            <div class="container">
+                <div class="section-heading">
+                    <h2><em>We help you…</em></h2>
+                </div>
+                <div class="feature-list">
+                    <div class="feature-list-item">
+                        <h3>Build a Data Strategy</h3>
+                        <p>We guide your leadership through a focused session to define your data mission, establish aligned strategic KPIs, and prioritize high-impact improvement opportunities — delivering a clear, actionable roadmap in one efficient workshop.</p>
+                    </div>
+                    <div class="feature-list-item">
+                        <h3>Create Automated Reporting</h3>
+                        <p>Turn your data into decisions. We build dashboards and reports that make performance clear at a glance, so you can see what's working, spot issues early, and plan your next move with confidence.</p>
+                    </div>
+                    <div class="feature-list-item">
+                        <h3>Integrate Your Systems</h3>
+                        <p>No more disconnected tools or double data entry. We connect your systems so information flows seamlessly — improving accuracy, efficiency, and visibility across your business.</p>
+                    </div>
+                    <div class="feature-list-item">
+                        <h3>Automate Your Core Processes</h3>
+                        <p>Stop wasting hours on repetitive tasks. We design smart automations that handle the busywork — saving you time, reducing errors, and helping your business run smoother every day.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog teasers -->
+        <section class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Notes from our blog</h2>
+                </div>
+                <p class="muted" style="margin-bottom: 2rem;">Articles for data analytics consulting</p>
+                <div class="card-grid">
+                    <article class="card">
+                        <div class="card-image" data-label="Article image"></div>
+                        <div class="card-body">
+                            <div class="card-meta">Nov 25, 2025</div>
+                            <h3>How to Turn Any Unstructured Text into Structured Data Using GenAI</h3>
+                            <a href="journal.html" class="card-link">Read more</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-image" data-label="Article image"></div>
+                        <div class="card-body">
+                            <div class="card-meta">Nov 24, 2025</div>
+                            <h3>The Revenue Leader's Guide to Building a Sales Analytics Stack That Actually Works</h3>
+                            <a href="journal.html" class="card-link">Read more</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-image" data-label="Article image"></div>
+                        <div class="card-body">
+                            <div class="card-meta">Nov 20, 2025</div>
+                            <h3>Why Trello Is a Game-Changer for Small Businesses Ready to Map and Automate Their Processes</h3>
+                            <a href="journal.html" class="card-link">Read more</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-image" data-label="Article image"></div>
+                        <div class="card-body">
+                            <div class="card-meta">Oct 30, 2025</div>
+                            <h3>How to Tackle the Mental Burden in Your Contracting Business</h3>
+                            <a href="journal.html" class="card-link">Read more</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section class="cta-banner">
+            <div class="container">
+                <h2>Let's get started</h2>
+                <p>Schedule a free consultation today to see how our expert solutions can streamline your processes and drive lasting success.</p>
+                <a href="contact-us.html" class="btn btn-amber">Free Consultation</a>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <div class="container-narrow">
+                <h3>Stay informed</h3>
+                <p>Sign up with your email address to receive news and updates.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Placeholder — wire to your ESP.');">
+                    <input type="email" placeholder="Email address" aria-label="Email address" required>
+                    <button type="submit" class="btn btn-primary">Sign up</button>
+                </form>
+                <p class="muted" style="font-size: 0.8rem; margin-top: 1rem;">We value and respect your privacy.</p>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 My Test Website. Built for testing.</p>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand">
+                        <span class="brand-mark"></span>
+                        <span class="brand-name">Quantify</span>
+                    </a>
+                    <p>Helping businesses unlock the power of their data through analytics, automation, and AI.</p>
+                </div>
+                <div>
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="data-analytics.html">Reporting & Analytics</a></li>
+                        <li><a href="business-process-automation.html">Process Automation</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="journal.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="contact-us.html">Get Started</a></li>
+                        <li><a href="mailto:evan@quantify-consulting.com">evan@quantify-consulting.com</a></li>
+                        <li><a href="tel:+13154863742">(315) 486-3742</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/evan-jennings/">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Quantify Consulting · <a href="#">Privacy Policy</a>
+            </div>
+        </div>
     </footer>
-
-    <script>
-        (function () {
-            var root = document.documentElement;
-            var btn = document.getElementById('themeToggle');
-
-            function applyLabel(theme) {
-                btn.textContent = theme === 'dark' ? '🌙 Dark' : '☀️ Light';
-            }
-
-            // Default to dark; respect any previously saved choice.
-            var saved = null;
-            try { saved = localStorage.getItem('theme'); } catch (e) {}
-            var initial = saved === 'light' ? 'light' : 'dark';
-            root.setAttribute('data-theme', initial);
-            applyLabel(initial);
-
-            btn.addEventListener('click', function () {
-                var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-                root.setAttribute('data-theme', next);
-                applyLabel(next);
-                try { localStorage.setItem('theme', next); } catch (e) {}
-            });
-        })();
-    </script>
 </body>
 </html>
