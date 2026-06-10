@@ -25,7 +25,7 @@ active_nav: outcomes
             <div class="section-heading">
                 <h2>Public Sector</h2>
             </div>
-            <div class="card-grid">
+            <div class="card-grid case-grid">
                 {% for study in public_studies %}{% include case-study-card.html study=study %}{% endfor %}
             </div>
             {% endif %}
@@ -34,7 +34,7 @@ active_nav: outcomes
             <div class="section-heading"{% if public_studies.size > 0 %} style="margin-top: 3rem;"{% endif %}>
                 <h2>Private Sector</h2>
             </div>
-            <div class="card-grid">
+            <div class="card-grid case-grid">
                 {% for study in private_studies %}{% include case-study-card.html study=study %}{% endfor %}
             </div>
             {% endif %}
@@ -43,7 +43,7 @@ active_nav: outcomes
             <div class="section-heading"{% if public_studies.size > 0 or private_studies.size > 0 %} style="margin-top: 3rem;"{% endif %}>
                 <h2>More Stories</h2>
             </div>
-            <div class="card-grid">
+            <div class="card-grid case-grid">
                 {% for study in untagged_studies %}{% include case-study-card.html study=study %}{% endfor %}
             </div>
             {% endif %}
