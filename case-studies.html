@@ -13,60 +13,43 @@ active_nav: outcomes
     </div>
 </section>
 
-<!-- Case study grid -->
+<!-- Case study grid, broken out by sector -->
 <section class="section">
     <div class="container">
-        <div class="card-grid">
-            <article class="card">
-                <div class="card-image" data-label="Client photo"></div>
-                <div class="card-body">
-                    <div class="card-meta">Lewis County</div>
-                    <h3>County Budget Transparency with Tyler ERP</h3>
-                    <p class="muted">Bringing visibility to general ledger data for an entire county government.</p>
-                    <a href="#" class="card-link">Learn more</a>
-                </div>
-            </article>
+        {% assign public_studies = site.case_studies | where: "sector", "public" %}
+        {% assign private_studies = site.case_studies | where: "sector", "private" %}
+        {% assign untagged_studies = site.case_studies | where_exp: "study", "study.sector == nil" %}
 
-            <article class="card">
-                <div class="card-image" data-label="Client photo"></div>
-                <div class="card-body">
-                    <div class="card-meta">Double Play Community Center</div>
-                    <h3>Impact Measurement: Demographics & Programs</h3>
-                    <p class="muted">Helping a community nonprofit quantify and tell the story of their reach.</p>
-                    <a href="#" class="card-link">Learn more</a>
-                </div>
-            </article>
+        {% if site.case_studies.size > 0 %}
+            {% if public_studies.size > 0 %}
+            <div class="section-heading">
+                <h2>Public Sector</h2>
+            </div>
+            <div class="card-grid">
+                {% for study in public_studies %}{% include case-study-card.html study=study %}{% endfor %}
+            </div>
+            {% endif %}
 
-            <article class="card">
-                <div class="card-image" data-label="Client photo"></div>
-                <div class="card-body">
-                    <div class="card-meta">North Country Handyman</div>
-                    <h3>Project Workflow Automation</h3>
-                    <p class="muted">Streamlining estimates, contracts, and project tracking for a residential trades business.</p>
-                    <a href="{{ '/case-studies/example-case-study/' | relative_url }}" class="card-link">Learn more</a>
-                </div>
-            </article>
+            {% if private_studies.size > 0 %}
+            <div class="section-heading"{% if public_studies.size > 0 %} style="margin-top: 3rem;"{% endif %}>
+                <h2>Private Sector</h2>
+            </div>
+            <div class="card-grid">
+                {% for study in private_studies %}{% include case-study-card.html study=study %}{% endfor %}
+            </div>
+            {% endif %}
 
-            <article class="card">
-                <div class="card-image" data-label="Client photo"></div>
-                <div class="card-body">
-                    <div class="card-meta">Lewis County</div>
-                    <h3>Trash and Recycling Data</h3>
-                    <p class="muted">Turning operational waste-management data into actionable insight.</p>
-                    <a href="#" class="card-link">Learn more</a>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-image" data-label="Client photo"></div>
-                <div class="card-body">
-                    <div class="card-meta">Sample Client Co.</div>
-                    <h3>Placeholder Case Study (with images)</h3>
-                    <p class="muted">A template showing the front matter and image paths Jekyll needs to render a case study.</p>
-                    <a href="{{ '/case-studies/placeholder-with-images/' | relative_url }}" class="card-link">Learn more</a>
-                </div>
-            </article>
-        </div>
+            {% if untagged_studies.size > 0 %}
+            <div class="section-heading"{% if public_studies.size > 0 or private_studies.size > 0 %} style="margin-top: 3rem;"{% endif %}>
+                <h2>More Stories</h2>
+            </div>
+            <div class="card-grid">
+                {% for study in untagged_studies %}{% include case-study-card.html study=study %}{% endfor %}
+            </div>
+            {% endif %}
+        {% else %}
+        <p class="muted" style="text-align: center;">New client stories are on the way — check back soon.</p>
+        {% endif %}
     </div>
 </section>
 
