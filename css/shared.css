@@ -1142,11 +1142,25 @@ textarea {
     margin-bottom: 2.5rem;
 }
 
+/* Image and stats are floats (not grid cells) so the body text below can
+   wrap up into the leftover space when one side runs shorter than the other */
 .cs-lede--split {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 2rem;
-    align-items: stretch;
+    margin-bottom: 0;
+}
+
+.cs-lede--split .cs-lede-media {
+    float: left;
+    width: calc(60% - 1rem);
+    margin: 0 0 1.5rem;
+}
+
+.cs-lede--split .cs-stats {
+    float: right;
+    width: calc(40% - 1rem);
+    margin: 0 0 1.5rem 2rem;
+    /* never shorter than the image's max height, so wrapped text only ever
+       flows into the wide column under the image */
+    min-height: 360px;
 }
 
 .cs-lede-media {
@@ -1157,7 +1171,7 @@ textarea {
 .cs-lede-media img {
     display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
     max-height: 360px;
     object-fit: cover;
     border-radius: 10px;
@@ -1264,13 +1278,20 @@ textarea {
 }
 
 .cs-back {
+    /* contain the lede floats when the body text runs shorter than they do */
+    clear: both;
     margin-top: 2.5rem;
 }
 
 @media (max-width: 720px) {
-    .cs-lede--split {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
+    .cs-lede--split .cs-lede-media,
+    .cs-lede--split .cs-stats {
+        float: none;
+        width: auto;
+        margin: 0 0 1.25rem;
+    }
+    .cs-lede--split .cs-stats {
+        min-height: 0;
     }
     .cs-lede-media img {
         max-height: 240px;
