@@ -12,16 +12,16 @@ results:
   - stat: "2"
     label: "Transfer stations with real-time performance visibility"
   - stat: "2"
-    label: "Strategic dashboards — one public, one internal"
+    label: "Strategic dashboards - one public, one internal"
 ---
 
-Lewis County's two transfer stations process thousands of tons of waste and recyclables every year — and the data behind those operations lived in three systems that never spoke to each other. We built the intelligence layer that connects them, turning scattered records into real-time strategic insight for leadership and the public alike.
+Lewis County's two transfer stations process thousands of tons of waste and recyclables every year - and the data behind those operations lived in three systems that never spoke to each other. We built the intelligence layer that connects them, turning scattered records into real-time strategic insight for leadership and the public alike.
 
 ## The challenge
 
 Department Director Kip Turck and his team tracked critical metrics like diversion rates and gross margins, but the data needed to make informed operational decisions was scattered across incompatible systems. The Compu-Weigh scale system logged tonnage data on a Paradigm server. The Tyler Munis ERP tracked department budgets and spending. Principal Account Clerk Denise Yost maintained detailed operational records in Excel spreadsheets. None of these systems communicated with each other.
 
-When County Administrator Tim Hunt needed to evaluate tip fee structures, vehicle maintenance costs, or staffing capacity, there was no unified view of how financial spending correlated with waste volumes. The department had comprehensive data — it just didn't tell a coherent story.
+When County Administrator Tim Hunt needed to evaluate tip fee structures, vehicle maintenance costs, or staffing capacity, there was no unified view of how financial spending correlated with waste volumes. The department had comprehensive data - it just didn't tell a coherent story.
 
 ## What we built
 
@@ -49,6 +49,6 @@ We re-architected the existing Power BI infrastructure around high-level strateg
 
 **Public accountability.** Residents see real-time environmental impact metrics, demonstrating responsible waste management.
 
-Lewis County Solid Waste connected existing systems rather than replacing them — the Compu-Weigh scales, Tyler ERP, and Excel spreadsheets all remained in place. Because the project leveraged infrastructure from our county-wide financial transparency initiative, development moved quickly without rebuilding integration pipelines: a demonstration of how strategic data architecture delivers compounding returns.
+Lewis County Solid Waste connected existing systems rather than replacing them - the Compu-Weigh scales, Tyler ERP, and Excel spreadsheets all remained in place. Because the project leveraged infrastructure from our county-wide financial transparency initiative, development moved quickly without rebuilding integration pipelines: a demonstration of how strategic data architecture delivers compounding returns.
 
 [View the live dashboard on the Lewis County website](https://lewiscountyny.gov/departments/solid-waste/#analytics)
