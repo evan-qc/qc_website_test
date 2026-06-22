@@ -882,6 +882,7 @@ a.pillar-link:hover .pillar-link-cue {
     position: relative;
     width: 100%;
     overflow: hidden;
+    margin-bottom: 2rem;
     -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
     mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
 }
