@@ -16,7 +16,7 @@ active_nav: get-started
 <!-- Form + intro -->
 <section class="section">
     <div class="container">
-        <div class="two-col">
+        <div class="two-col" style="grid-template-columns: 0.85fr 1.15fr; align-items: start;">
             <div>
                 <div class="section-heading">
                     <h2>Tell us a bit about you</h2>
@@ -26,7 +26,7 @@ active_nav: get-started
             </div>
             <div>
                 <script type="module" src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js"></script>
-                <zapier-interfaces-page-embed page-id="cmglnx8r00006qkyyfckcbqcz" test-id="cmglnx8r00006qkyyfckcbqcz-zapier-interfaces-page-embed-iframe" no-background="false" style="max-width: 900px; height: 1000px;"></zapier-interfaces-page-embed>
+                <zapier-interfaces-page-embed page-id="cmglnx8r00006qkyyfckcbqcz" test-id="cmglnx8r00006qkyyfckcbqcz-zapier-interfaces-page-embed-iframe" no-background="false" style="display: block; width: 100%; height: 1600px;"></zapier-interfaces-page-embed>
             </div>
         </div>
     </div>
@@ -68,18 +68,5 @@ active_nav: get-started
             <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Still have questions?</h3>
             <p class="muted">Drop us a line - we'll respond within 48 hours.</p>
         </div>
-    </div>
-</section>
-
-<!-- Newsletter -->
-<section class="newsletter">
-    <div class="container-narrow">
-        <h3>Stay informed</h3>
-        <p>Sign up with your email address to receive news and updates.</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Placeholder - wire to your ESP.');">
-            <input type="email" placeholder="Email address" aria-label="Email address" required>
-            <button type="submit" class="btn btn-primary">Sign up</button>
-        </form>
-        <p class="muted" style="font-size: 0.8rem; margin-top: 1rem;">We value and respect your privacy.</p>
     </div>
 </section>

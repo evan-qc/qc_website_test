@@ -69,40 +69,16 @@ description: "We help businesses elevate operations through commercial digitaliz
             <h2>Notes from our blog</h2>
         </div>
         <p class="muted" style="margin-bottom: 2rem;">Articles for data analytics consulting</p>
-        <div class="card-grid">
-            <article class="card">
-                <div class="card-image" data-label="Article image"></div>
-                <div class="card-body">
-                    <div class="card-meta">Nov 25, 2025</div>
-                    <h3>How to Turn Any Unstructured Text into Structured Data Using GenAI</h3>
-                    <a href="{{ '/journal.html' | relative_url }}" class="card-link">Read more</a>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card-image" data-label="Article image"></div>
-                <div class="card-body">
-                    <div class="card-meta">Nov 24, 2025</div>
-                    <h3>The Revenue Leader's Guide to Building a Sales Analytics Stack That Actually Works</h3>
-                    <a href="{{ '/journal.html' | relative_url }}" class="card-link">Read more</a>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card-image" data-label="Article image"></div>
-                <div class="card-body">
-                    <div class="card-meta">Nov 20, 2025</div>
-                    <h3>Why Trello Is a Game-Changer for Small Businesses Ready to Map and Automate Their Processes</h3>
-                    <a href="{{ '/journal.html' | relative_url }}" class="card-link">Read more</a>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card-image" data-label="Article image"></div>
-                <div class="card-body">
-                    <div class="card-meta">Oct 30, 2025</div>
-                    <h3>How to Tackle the Mental Burden in Your Contracting Business</h3>
-                    <a href="{{ '/journal.html' | relative_url }}" class="card-link">Read more</a>
-                </div>
-            </article>
+        {% if site.posts.size > 0 %}
+        <div class="card-grid case-grid">
+            {% for post in site.posts limit: 3 %}{% include post-card.html post=post %}{% endfor %}
         </div>
+        <div style="margin-top: 2rem;">
+            <a href="{{ '/journal.html' | relative_url }}" class="card-link">Read all articles</a>
+        </div>
+        {% else %}
+        <p class="muted">New articles are on the way - check back soon.</p>
+        {% endif %}
     </div>
 </section>
 
@@ -112,18 +88,5 @@ description: "We help businesses elevate operations through commercial digitaliz
         <h2>Let's get started</h2>
         <p>Schedule a free consultation today to see how our expert solutions can streamline your processes and drive lasting success.</p>
         <a href="{{ '/get-started.html' | relative_url }}" class="btn btn-amber">Let's Work Together</a>
-    </div>
-</section>
-
-<!-- Newsletter -->
-<section class="newsletter">
-    <div class="container-narrow">
-        <h3>Stay informed</h3>
-        <p>Sign up with your email address to receive news and updates.</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Placeholder - wire to your ESP.');">
-            <input type="email" placeholder="Email address" aria-label="Email address" required>
-            <button type="submit" class="btn btn-primary">Sign up</button>
-        </form>
-        <p class="muted" style="font-size: 0.8rem; margin-top: 1rem;">We value and respect your privacy.</p>
     </div>
 </section>

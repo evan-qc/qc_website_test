@@ -1,0 +1,11 @@
+<article class="card">
+    <a href="{{ include.post.url | relative_url }}" class="card-image"{% unless include.post.image %} data-label="Article image"{% endunless %}>
+        {% if include.post.image %}<img src="{{ include.post.image | relative_url }}" alt="{{ include.post.image_alt | default: include.post.title }}">{% endif %}
+    </a>
+    <div class="card-body">
+        <div class="card-meta">{% if include.post.author %}{{ include.post.author }} · {% endif %}{{ include.post.date | date: "%b %-d, %Y" }}</div>
+        <h3>{{ include.post.title }}</h3>
+        {% if include.post.subtitle %}<p class="muted">{{ include.post.subtitle }}</p>{% endif %}
+        <a href="{{ include.post.url | relative_url }}" class="card-link">Read more</a>
+    </div>
+</article>
