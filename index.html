@@ -74,7 +74,7 @@ description: "We help businesses elevate operations through commercial digitaliz
             {% for post in site.posts limit: 3 %}{% include post-card.html post=post %}{% endfor %}
         </div>
         <div style="margin-top: 2rem;">
-            <a href="{{ '/journal.html' | relative_url }}" class="card-link">Read all articles</a>
+            <a href="{{ '/journal/' | relative_url }}" class="card-link">Read all articles</a>
         </div>
         {% else %}
         <p class="muted">New articles are on the way - check back soon.</p>
@@ -87,6 +87,6 @@ description: "We help businesses elevate operations through commercial digitaliz
     <div class="container">
         <h2>Let's get started</h2>
         <p>Schedule a free consultation today to see how our expert solutions can streamline your processes and drive lasting success.</p>
-        <a href="{{ '/get-started.html' | relative_url }}" class="btn btn-amber">Let's Work Together</a>
+        <a href="{{ '/get-started/' | relative_url }}" class="btn btn-amber">Let's Work Together</a>
     </div>
 </section>
