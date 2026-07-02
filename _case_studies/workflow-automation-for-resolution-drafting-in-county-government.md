@@ -2,6 +2,8 @@
 title: "Workflow Automation for Resolution Drafting in County Government"
 client: "Anonymous County"
 sector: public
+rank: 40
+capabilities: [automation]
 summary: "We replaced a county's manual, Adobe-form resolution process with an automated workflow that drafts resolutions, files and tracks every submission, and gives 30 departments real-time visibility into where their requests stand."
 description: "How we automated resolution drafting for a county government, turning a slow, error-prone paper process serving 30 departments into a faster, fully tracked workflow built on Microsoft Forms, OpenAI, Zapier, and Power Automate."
 hero_image: "/assets/case-studies/legislators_hero.webp"
