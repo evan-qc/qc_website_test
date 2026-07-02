@@ -2,6 +2,8 @@
 title: "Automating a Church's Rental Workflow So Staff Could Get Back to Ministry"
 client: "Christian Community Center"
 sector: private
+rank: 9
+capabilities: [automation]
 summary: "We replaced CCC's manual, email-and-phone rental process with a hands-off automation built on Zapier, Trello, Google Calendar, and Twilio - reclaiming 7.5 hours of admin every month."
 description: "How Christian Community Center in Turin, NY automated its building-rental workflow with Zapier, Trello, and Twilio - saving 7.5 staff hours a month and eliminating forgotten access codes."
 hero_image: "/assets/case-studies/christian-community-center-rental-automation-hero.jpg"

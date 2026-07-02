@@ -2,6 +2,8 @@
 title: "How Double Play Community Center Transformed Grant Reporting from Manual Spreadsheets to Automated Insights"
 client: "Double Play Community Center"
 sector: private
+rank: 8
+capabilities: [automation, dashboards]
 summary: "We connected Double Play Community Center's Mindbody and Squarespace data into an automated Looker Studio dashboard, turning hours of manual grant reporting into instant demographic insight."
 description: "How Quantify helped Double Play Community Center, a Lewis County nonprofit, automate grant reporting - unifying Mindbody and Squarespace data into a Looker Studio dashboard that maps participants to townships and updates demographics in real time."
 

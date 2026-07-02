@@ -9,44 +9,45 @@ active_nav: outcomes
     <div class="hero-content">
         <span class="eyebrow">Client Outcomes</span>
         <h1>Real Stories. <span class="accent-word">Real Impact.</span></h1>
-        <p class="lead">A look at the work we've done - from county budget transparency to project workflow automation for trades businesses.</p>
+        <p class="lead">A look at the work we've done - from county budget transparency to project workflow automation for trades businesses. Filter by sector or by what we did to find the stories that fit you.</p>
     </div>
 </section>
 
-<!-- Case study grid, broken out by sector -->
+{% assign sorted_studies = site.case_studies | sort: "rank" %}
+{% assign total = site.case_studies.size %}
+{% assign public_count = site.case_studies | where: "sector", "public" | size %}
+{% assign private_count = site.case_studies | where: "sector", "private" | size %}
+{% assign analytics_count = site.case_studies | where_exp: "s", "s.capabilities contains 'analytics'" | size %}
+{% assign automation_count = site.case_studies | where_exp: "s", "s.capabilities contains 'automation'" | size %}
+{% assign dashboards_count = site.case_studies | where_exp: "s", "s.capabilities contains 'dashboards'" | size %}
+
+<!-- Filterable case-study grid -->
 <section class="section">
     <div class="container">
-        {% assign public_studies = site.case_studies | where: "sector", "public" %}
-        {% assign private_studies = site.case_studies | where: "sector", "private" %}
-        {% assign untagged_studies = site.case_studies | where_exp: "study", "study.sector == nil" %}
+        {% if total > 0 %}
+        <div class="filter-bar" id="case-filters">
+            <div class="filter-group" data-group="sector" role="group" aria-label="Filter by sector">
+                <span class="filter-label">Sector</span>
+                <button type="button" class="filter-chip is-active" data-group="sector" data-value="all" aria-pressed="true">All <span class="chip-count">{{ total }}</span></button>
+                <button type="button" class="filter-chip" data-group="sector" data-value="public" aria-pressed="false">Government &amp; Civic <span class="chip-count">{{ public_count }}</span></button>
+                <button type="button" class="filter-chip" data-group="sector" data-value="private" aria-pressed="false">Business &amp; Industry <span class="chip-count">{{ private_count }}</span></button>
+            </div>
+            <div class="filter-group" data-group="capability" role="group" aria-label="Filter by capability">
+                <span class="filter-label">What we did</span>
+                <button type="button" class="filter-chip is-active" data-group="capability" data-value="all" aria-pressed="true">All</button>
+                <button type="button" class="filter-chip" data-group="capability" data-value="analytics" aria-pressed="false">Analytics <span class="chip-count">{{ analytics_count }}</span></button>
+                <button type="button" class="filter-chip" data-group="capability" data-value="automation" aria-pressed="false">Automation <span class="chip-count">{{ automation_count }}</span></button>
+                <button type="button" class="filter-chip" data-group="capability" data-value="dashboards" aria-pressed="false">Dashboards <span class="chip-count">{{ dashboards_count }}</span></button>
+            </div>
+        </div>
 
-        {% if site.case_studies.size > 0 %}
-            {% if private_studies.size > 0 %}
-            <div class="section-heading">
-                <h2>Business &amp; Industry</h2>
-            </div>
-            <div class="card-grid case-grid">
-                {% for study in private_studies %}{% include case-study-card.html study=study %}{% endfor %}
-            </div>
-            {% endif %}
+        <p class="filter-status" id="filter-status" aria-live="polite">Showing all {{ total }} stories</p>
 
-            {% if public_studies.size > 0 %}
-            <div class="section-heading"{% if private_studies.size > 0 %} style="margin-top: 3rem;"{% endif %}>
-                <h2>Government &amp; Civic</h2>
-            </div>
-            <div class="card-grid case-grid">
-                {% for study in public_studies %}{% include case-study-card.html study=study %}{% endfor %}
-            </div>
-            {% endif %}
+        <div class="card-grid case-grid" id="case-grid">
+            {% for study in sorted_studies %}{% include case-study-card.html study=study %}{% endfor %}
+        </div>
 
-            {% if untagged_studies.size > 0 %}
-            <div class="section-heading"{% if private_studies.size > 0 or public_studies.size > 0 %} style="margin-top: 3rem;"{% endif %}>
-                <h2>Other Engagements</h2>
-            </div>
-            <div class="card-grid case-grid">
-                {% for study in untagged_studies %}{% include case-study-card.html study=study %}{% endfor %}
-            </div>
-            {% endif %}
+        <p class="filter-empty" id="filter-empty" hidden>No stories match those filters yet. <button type="button" class="link-btn" id="filter-reset">Clear filters</button> to see them all.</p>
         {% else %}
         <p class="muted" style="text-align: center;">New client stories are on the way - check back soon.</p>
         {% endif %}
@@ -61,3 +62,66 @@ active_nav: outcomes
         <a href="{{ '/get-started.html' | relative_url }}" class="btn btn-amber">Let's Work Together</a>
     </div>
 </section>
+
+{% if total > 0 %}
+<script>
+(function () {
+    var grid = document.getElementById('case-grid');
+    if (!grid) return;
+
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.case-card'));
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.filter-chip'));
+    var statusEl = document.getElementById('filter-status');
+    var emptyEl = document.getElementById('filter-empty');
+    var resetBtn = document.getElementById('filter-reset');
+    var total = cards.length;
+
+    var active = { sector: 'all', capability: 'all' };
+
+    function apply() {
+        var visible = 0;
+        cards.forEach(function (card) {
+            var sectorOk = active.sector === 'all' || card.getAttribute('data-sector') === active.sector;
+            var caps = (card.getAttribute('data-capabilities') || '').split(' ');
+            var capOk = active.capability === 'all' || caps.indexOf(active.capability) !== -1;
+            var show = sectorOk && capOk;
+            card.hidden = !show;
+            if (show) visible++;
+        });
+
+        // Status message
+        if (active.sector === 'all' && active.capability === 'all') {
+            statusEl.textContent = 'Showing all ' + total + ' stories';
+        } else {
+            statusEl.textContent = 'Showing ' + visible + ' of ' + total + ' stories';
+        }
+
+        emptyEl.hidden = visible !== 0;
+    }
+
+    function setActive(group, value) {
+        active[group] = value;
+        chips.forEach(function (chip) {
+            if (chip.getAttribute('data-group') !== group) return;
+            var on = chip.getAttribute('data-value') === value;
+            chip.classList.toggle('is-active', on);
+            chip.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        apply();
+    }
+
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            setActive(chip.getAttribute('data-group'), chip.getAttribute('data-value'));
+        });
+    });
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function () {
+            setActive('sector', 'all');
+            setActive('capability', 'all');
+        });
+    }
+})();
+</script>
+{% endif %}

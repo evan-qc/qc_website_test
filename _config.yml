@@ -20,3 +20,5 @@ defaults:
       type: case_studies
     values:
       layout: case-study
+      rank: 99          # unranked studies sort to the end of the grid
+      capabilities: []  # keeps capability filtering safe when none are tagged
