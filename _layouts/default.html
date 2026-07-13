@@ -70,25 +70,36 @@
             <a href="{{ '/index.html' | relative_url }}" class="site-logo">
                 <img src="{{ '/assets/qc_logo_black_on_transparent.png' | relative_url }}" alt="Quantify" height="32" />
             </a>
-            <nav class="site-nav">
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-controls="site-nav" aria-expanded="false">
+                <span class="nav-toggle-box" aria-hidden="true">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </span>
+            </button>
+            <nav class="site-nav" id="site-nav" aria-label="Primary">
                 <div class="nav-item has-dropdown">
-                    <button type="button" class="nav-trigger{% if page.active_nav == 'about' %} active{% endif %}" aria-haspopup="true">About Us <span class="nav-caret" aria-hidden="true">▾</span></button>
+                    <button type="button" class="nav-trigger{% if page.active_nav == 'about' %} active{% endif %}" aria-haspopup="true" aria-expanded="false">About Us <span class="nav-caret" aria-hidden="true">▾</span></button>
                     <div class="dropdown">
-                        <a href="{{ '/our-why.html' | relative_url }}">Our Why</a>
-                        <a href="{{ '/the-3as.html' | relative_url }}">The "3 A's"</a>
-                        <a href="{{ '/what-to-expect.html' | relative_url }}">What to Expect</a>
-                        <a href="{{ '/about.html' | relative_url }}">Meet The Team</a>
+                        <div class="dropdown-inner">
+                            <a href="{{ '/our-why.html' | relative_url }}">Our Why</a>
+                            <a href="{{ '/the-3as.html' | relative_url }}">The "3 A's"</a>
+                            <a href="{{ '/what-to-expect.html' | relative_url }}">What to Expect</a>
+                            <a href="{{ '/about.html' | relative_url }}">Meet The Team</a>
+                        </div>
                     </div>
                 </div>
                 <div class="nav-item has-dropdown">
-                    <button type="button" class="nav-trigger{% if page.active_nav == 'expertise' %} active{% endif %}" aria-haspopup="true">Expertise <span class="nav-caret" aria-hidden="true">▾</span></button>
+                    <button type="button" class="nav-trigger{% if page.active_nav == 'expertise' %} active{% endif %}" aria-haspopup="true" aria-expanded="false">Expertise <span class="nav-caret" aria-hidden="true">▾</span></button>
                     <div class="dropdown">
-                        <a href="{{ '/journal.html' | relative_url }}">Blog</a>
-                        <span class="dropdown-label">The 3 A's</span>
-                        <a href="{{ '/data-analytics.html' | relative_url }}" class="dropdown-sub">Analytics</a>
-                        <a href="{{ '/business-process-automation.html' | relative_url }}" class="dropdown-sub">Automation</a>
-                        <a href="{{ '/ai.html' | relative_url }}" class="dropdown-sub">AI</a>
-                        <a href="{{ '/technologies-partners.html' | relative_url }}">Technologies &amp; Partners</a>
+                        <div class="dropdown-inner">
+                            <a href="{{ '/journal.html' | relative_url }}">Blog</a>
+                            <span class="dropdown-label">The 3 A's</span>
+                            <a href="{{ '/data-analytics.html' | relative_url }}" class="dropdown-sub">Analytics</a>
+                            <a href="{{ '/business-process-automation.html' | relative_url }}" class="dropdown-sub">Automation</a>
+                            <a href="{{ '/ai.html' | relative_url }}" class="dropdown-sub">AI</a>
+                            <a href="{{ '/technologies-partners.html' | relative_url }}">Technologies &amp; Partners</a>
+                        </div>
                     </div>
                 </div>
                 <a href="{{ '/case-studies.html' | relative_url }}" class="nav-link{% if page.active_nav == 'outcomes' %} active{% endif %}">Client Outcomes</a>
@@ -96,6 +107,7 @@
             </nav>
         </div>
     </header>
+    <div class="nav-scrim" id="nav-scrim" hidden></div>
 
     <main>{{ content }}</main>
 
@@ -145,6 +157,69 @@
             </div>
         </div>
     </footer>
+
+    <!-- Mobile navigation: slide-out drawer + accessible dropdown accordions -->
+    <script>
+      (function () {
+        var toggle = document.getElementById('nav-toggle');
+        var nav = document.getElementById('site-nav');
+        var scrim = document.getElementById('nav-scrim');
+        if (!toggle || !nav) return;
+
+        var desktop = window.matchMedia('(min-width: 768px)');
+
+        function openNav() {
+          nav.classList.add('is-open');
+          toggle.setAttribute('aria-expanded', 'true');
+          toggle.setAttribute('aria-label', 'Close navigation menu');
+          if (scrim) scrim.hidden = false;
+          document.body.classList.add('nav-open');
+        }
+
+        function closeNav() {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          if (scrim) scrim.hidden = true;
+          document.body.classList.remove('nav-open');
+          nav.querySelectorAll('.nav-item.is-open').forEach(function (item) {
+            item.classList.remove('is-open');
+            var t = item.querySelector('.nav-trigger');
+            if (t) t.setAttribute('aria-expanded', 'false');
+          });
+        }
+
+        toggle.addEventListener('click', function () {
+          if (nav.classList.contains('is-open')) { closeNav(); } else { openNav(); }
+        });
+
+        if (scrim) scrim.addEventListener('click', closeNav);
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+            closeNav();
+            toggle.focus();
+          }
+        });
+
+        // Dropdown triggers act as accordions inside the drawer; on desktop
+        // the CSS hover/focus behaviour takes over and we leave them alone.
+        nav.querySelectorAll('.nav-trigger').forEach(function (trigger) {
+          trigger.addEventListener('click', function () {
+            if (desktop.matches) return;
+            var item = trigger.closest('.nav-item');
+            if (!item) return;
+            var isOpen = item.classList.toggle('is-open');
+            trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          });
+        });
+
+        // Reset drawer state when growing past the desktop breakpoint.
+        (desktop.addEventListener ? desktop.addEventListener('change', handleBreakpoint)
+                                  : desktop.addListener(handleBreakpoint));
+        function handleBreakpoint(e) { if (e.matches) closeNav(); }
+      })();
+    </script>
 
     <!-- Brevo form scripts -->
     <script>
