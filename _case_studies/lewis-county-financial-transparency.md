@@ -8,6 +8,8 @@ summary: "We built a cloud analytics layer on top of Lewis County's existing Tyl
 description: "How Quantify gave Lewis County Government real-time financial transparency - connecting its Tyler Munis ERP to an Azure data warehouse and Power BI dashboards for staff and citizens, in three months."
 
 hero_image: "/assets/case-studies/lewis-county-financial-transparency-hero.jpg"
+hero_image_width: 1396
+hero_image_height: 924
 hero_image_alt: "The Lewis County Court House in Lowville, New York"
 
 results:

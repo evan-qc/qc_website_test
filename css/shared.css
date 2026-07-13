@@ -150,7 +150,9 @@ h1, h2, h3, h4, p, li, a {
 .btn:focus-visible,
 .filter-chip:focus-visible,
 .link-btn:focus-visible,
-.faq-item summary:focus-visible {
+.faq-item summary:focus-visible,
+a.pillar-link:focus-visible,
+.card-link:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
@@ -300,12 +302,18 @@ h1, h2, h3, h4, p, li, a {
     transition: background 0.2s, color 0.2s;
 }
 
-.site-nav a:hover,
 .site-nav a.active,
-.nav-trigger:hover,
 .nav-trigger.active {
     background: var(--bg-nav-hover);
     color: var(--accent);
+}
+
+@media (hover: hover) {
+    .site-nav a:hover,
+    .nav-trigger:hover {
+        background: var(--bg-nav-hover);
+        color: var(--accent);
+    }
 }
 
 .site-nav .cta {
@@ -315,9 +323,11 @@ h1, h2, h3, h4, p, li, a {
     color: var(--brand-white);
 }
 
-.site-nav .cta:hover {
-    background: var(--accent-hover);
-    color: var(--brand-white);
+@media (hover: hover) {
+    .site-nav .cta:hover {
+        background: var(--accent-hover);
+        color: var(--brand-white);
+    }
 }
 
 /* ---------- Dropdown nav ---------- */
@@ -653,9 +663,11 @@ a {
     transition: color 0.2s, border-color 0.2s;
 }
 
-a:hover {
-    color: var(--accent-warm);
-    border-bottom-color: var(--accent-warm);
+@media (hover: hover) {
+    a:hover {
+        color: var(--accent-warm);
+        border-bottom-color: var(--accent-warm);
+    }
 }
 
 /* Section heading with accent bar */
@@ -699,12 +711,14 @@ a:hover {
     box-shadow: 0 4px 14px rgba(91, 75, 204, 0.35);
 }
 
-.btn-primary:hover {
-    background: var(--accent-hover);
-    color: var(--brand-white);
-    transform: translateY(-1px);
-    border-bottom-color: transparent;
-    box-shadow: 0 6px 20px rgba(91, 75, 204, 0.45);
+@media (hover: hover) {
+    .btn-primary:hover {
+        background: var(--accent-hover);
+        color: var(--brand-white);
+        transform: translateY(-1px);
+        border-bottom-color: transparent;
+        box-shadow: 0 6px 20px rgba(91, 75, 204, 0.45);
+    }
 }
 
 .btn-amber {
@@ -713,11 +727,13 @@ a:hover {
     box-shadow: 0 4px 14px rgba(217, 149, 43, 0.25);
 }
 
-.btn-amber:hover {
-    background: var(--cta-amber-hover);
-    color: #1A1230;
-    transform: translateY(-1px);
-    border-bottom-color: transparent;
+@media (hover: hover) {
+    .btn-amber:hover {
+        background: var(--cta-amber-hover);
+        color: #1A1230;
+        transform: translateY(-1px);
+        border-bottom-color: transparent;
+    }
 }
 
 /* Outline button for light surfaces. (Was styled white-on-white for dark
@@ -729,10 +745,18 @@ a:hover {
     border: 1px solid var(--accent);
 }
 
-.btn-ghost:hover {
-    color: var(--accent-hover);
-    border-color: var(--accent-hover);
-    background: var(--bg-nav-hover);
+@media (hover: hover) {
+    .btn-ghost:hover {
+        color: var(--accent-hover);
+        border-color: var(--accent-hover);
+        background: var(--bg-nav-hover);
+    }
+}
+
+/* Touch/click press feedback — the primary affordance where hover is
+   unavailable (mobile) or after a keyboard/pointer activation. */
+.btn:active {
+    transform: translateY(1px) scale(0.98);
 }
 
 /* ---------- Hero ---------- */
@@ -827,10 +851,12 @@ a:hover {
     transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
-.pillar:hover {
-    transform: translateY(-3px);
-    background: var(--surface-3);
-    box-shadow: var(--shadow-sm);
+@media (hover: hover) {
+    .pillar:hover {
+        transform: translateY(-3px);
+        background: var(--surface-3);
+        box-shadow: var(--shadow-sm);
+    }
 }
 
 /* Whole-tile link variant: the entire pillar is clickable */
@@ -841,7 +867,14 @@ a.pillar-link {
     cursor: pointer;
 }
 
-a.pillar-link:hover {
+@media (hover: hover) {
+    a.pillar-link:hover {
+        border-color: var(--brand-iris-soft);
+    }
+}
+
+a.pillar-link:active {
+    transform: scale(0.99);
     border-color: var(--brand-iris-soft);
 }
 
@@ -855,8 +888,10 @@ a.pillar-link h3 {
     transition: color 0.2s;
 }
 
-a.pillar-link:hover .pillar-link-cue {
-    color: var(--accent-warm);
+@media (hover: hover) {
+    a.pillar-link:hover .pillar-link-cue {
+        color: var(--accent-warm);
+    }
 }
 
 .pillar-icon-chip {
@@ -999,7 +1034,14 @@ a.pillar-link:hover .pillar-link-cue {
     transition: background 0.18s, color 0.18s, border-color 0.18s;
 }
 
-.filter-chip:hover {
+@media (hover: hover) {
+    .filter-chip:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+}
+
+.filter-chip:active {
     border-color: var(--accent);
     color: var(--accent);
 }
@@ -1042,7 +1084,9 @@ a.pillar-link:hover .pillar-link-cue {
     text-underline-offset: 2px;
 }
 
-.link-btn:hover { color: var(--accent-hover); }
+@media (hover: hover) {
+    .link-btn:hover { color: var(--accent-hover); }
+}
 
 /* Cards hidden by the filter should not occupy a grid track */
 .case-card[hidden] { display: none; }
@@ -1079,10 +1123,17 @@ a.pillar-link:hover .pillar-link-cue {
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
-.card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-sm);
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-sm);
+        border-color: var(--border-strong);
+    }
+}
+
+.card:active {
     border-color: var(--border-strong);
+    box-shadow: var(--shadow-sm);
 }
 
 .card-image {
@@ -1173,8 +1224,10 @@ a.pillar-link:hover .pillar-link-cue {
     display: inline-block;
 }
 
-.card-link:hover::after {
-    transform: translateX(3px);
+@media (hover: hover) {
+    .card-link:hover::after {
+        transform: translateX(3px);
+    }
 }
 
 /* ---------- Team member ---------- */
@@ -1254,7 +1307,9 @@ a.pillar-link:hover .pillar-link-cue {
     transition: color 0.2s;
 }
 
-.faq-item summary:hover { color: var(--accent-warm); }
+@media (hover: hover) {
+    .faq-item summary:hover { color: var(--accent-warm); }
+}
 
 .faq-item summary::-webkit-details-marker { display: none; }
 
@@ -1304,8 +1359,10 @@ a.pillar-link:hover .pillar-link-cue {
     will-change: transform;
 }
 
-.logo-ticker:hover .logo-ticker-track {
-    animation-play-state: paused;
+@media (hover: hover) {
+    .logo-ticker:hover .logo-ticker-track {
+        animation-play-state: paused;
+    }
 }
 
 .logo-ticker-group {
@@ -1333,9 +1390,11 @@ a.pillar-link:hover .pillar-link-cue {
     transition: color 0.2s, border-color 0.2s;
 }
 
-.ticker-chip:hover {
-    color: var(--accent-warm);
-    border-color: var(--accent-warm);
+@media (hover: hover) {
+    .ticker-chip:hover {
+        color: var(--accent-warm);
+        border-color: var(--accent-warm);
+    }
 }
 
 .ticker-chip img {
@@ -1394,8 +1453,10 @@ a.pillar-link:hover .pillar-link-cue {
     object-fit: contain;
 }
 
-.logo-tile:hover {
-    border-color: var(--accent-warm);
+@media (hover: hover) {
+    .logo-tile:hover {
+        border-color: var(--accent-warm);
+    }
 }
 
 .logo-tile-text {
@@ -1445,17 +1506,19 @@ a.pillar-link:hover .pillar-link-cue {
     z-index: 20;
 }
 
-.logo-tile[data-tooltip]:hover::after,
-.logo-tile[data-tooltip]:hover::before,
-.logo-tile[data-tooltip]:focus-within::after,
-.logo-tile[data-tooltip]:focus-within::before,
-.ticker-chip[data-tooltip]:hover::after,
-.ticker-chip[data-tooltip]:hover::before,
-.ticker-chip[data-tooltip]:focus-within::after,
-.ticker-chip[data-tooltip]:focus-within::before {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, 0);
+@media (hover: hover) {
+    .logo-tile[data-tooltip]:hover::after,
+    .logo-tile[data-tooltip]:hover::before,
+    .logo-tile[data-tooltip]:focus-within::after,
+    .logo-tile[data-tooltip]:focus-within::before,
+    .ticker-chip[data-tooltip]:hover::after,
+    .ticker-chip[data-tooltip]:hover::before,
+    .ticker-chip[data-tooltip]:focus-within::after,
+    .ticker-chip[data-tooltip]:focus-within::before {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0);
+    }
 }
 
 .logo-group-heading {
@@ -1612,9 +1675,11 @@ textarea {
     }
 }
 
-.footer-grid a:hover {
-    color: var(--accent-warm);
-    border-bottom-color: transparent;
+@media (hover: hover) {
+    .footer-grid a:hover {
+        color: var(--accent-warm);
+        border-bottom-color: transparent;
+    }
 }
 
 .footer-brand .site-logo {

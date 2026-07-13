@@ -8,6 +8,8 @@ summary: "We consolidated 30-plus grant-tracking tables into a single relational
 description: "How Quantify helped Lewis County's Planning and Community Development team turn 30-plus disconnected grant-tracking tables into one relational system and a public Power BI dashboard, making $5M+ a year in secured funding visible to residents and legislators."
 
 hero_image: "/assets/case-studies/lewis-county-grant-funding-hero.png"
+hero_image_width: 1423
+hero_image_height: 882
 hero_image_alt: "Public Power BI dashboard titled Planning and Community Development - Total Funding Secured, showing $29.48M in total funding mapped across Lewis County and ranked by project"
 
 results:

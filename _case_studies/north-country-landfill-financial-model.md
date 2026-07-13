@@ -8,6 +8,8 @@ summary: "We rebuilt the Development Authority of the North Country's brittle la
 description: "How Quantify replaced the Development Authority of the North Country's aging landfill financial workbook with a 50-year, Excel-based scenario-planning engine - VBA workflows, SharePoint version control, and a Power BI scenario layer."
 
 hero_image: "/assets/case-studies/north-country-landfill-financial-model-hero.jpg"
+hero_image_width: 1600
+hero_image_height: 1067
 hero_image_alt: "Aerial view of the Authority's Materials Management Facility landfill in New York's North Country"
 
 results:
