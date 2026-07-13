@@ -62,26 +62,6 @@ description: "We help businesses elevate operations through commercial digitaliz
     </div>
 </section>
 
-<!-- Blog teasers -->
-<section class="section">
-    <div class="container">
-        <div class="section-heading">
-            <h2>Notes from our blog</h2>
-        </div>
-        <p class="muted u-mb-8">Articles for data analytics consulting</p>
-        {% if site.posts.size > 0 %}
-        <div class="card-grid case-grid">
-            {% for post in site.posts limit: 3 %}{% include post-card.html post=post %}{% endfor %}
-        </div>
-        <div class="u-mt-8">
-            <a href="{{ '/journal.html' | relative_url }}" class="card-link">Read all articles</a>
-        </div>
-        {% else %}
-        <p class="muted">New articles are on the way - check back soon.</p>
-        {% endif %}
-    </div>
-</section>
-
 <!-- CTA Banner -->
 <section class="cta-banner">
     <div class="container">
