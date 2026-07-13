@@ -7,62 +7,6 @@
     <meta name="description" content="{{ page.description | default: site.description }}">
     <link rel="icon" type="image/png" href="{{ '/assets/qc_logo_only_blank_on_trans.png' | relative_url }}">
     <link rel="stylesheet" href="{{ '/css/shared.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-
-    <!-- Brevo form styles -->
-    <style>
-      @font-face {
-        font-display: block;
-        font-family: Roboto;
-        src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
-      }
-
-      @font-face {
-        font-display: fallback;
-        font-family: Roboto;
-        font-weight: 600;
-        src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
-      }
-
-      @font-face {
-        font-display: fallback;
-        font-family: Roboto;
-        font-weight: 700;
-        src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
-      }
-
-      :where(.sib-form-message-panel) {
-        display: none;
-      }
-
-      :where(.sib-form-message-panel .sib-notification__icon) {
-        width: 20px;
-        height: 20px;
-      }
-
-      #sib-container input:-ms-input-placeholder {
-        font-family: Helvetica, sans-serif;
-        text-align: left;
-        color: #c0ccda;
-      }
-
-      #sib-container input::placeholder {
-        font-family: Helvetica, sans-serif;
-        text-align: left;
-        color: #c0ccda;
-      }
-
-      #sib-container textarea::placeholder {
-        font-family: Helvetica, sans-serif;
-        text-align: left;
-        color: #c0ccda;
-      }
-
-      #sib-container a {
-        text-decoration: underline;
-        color: #2BB2FC;
-      }
-    </style>
-    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 <body>
     <header class="site-header">
@@ -113,9 +57,6 @@
 
     <footer class="site-footer">
         <div class="container">
-            <div class="footer-newsletter">
-                {% include newsletter-form.html %}
-            </div>
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="{{ '/index.html' | relative_url }}" class="site-logo">
@@ -220,27 +161,5 @@
         function handleBreakpoint(e) { if (e.matches) closeNav(); }
       })();
     </script>
-
-    <!-- Brevo form scripts -->
-    <script>
-      window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
-      window.LOCALE = 'en';
-      window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
-      window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
-      window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
-      window.INVALID_NUMBER = "The information provided is invalid. Please review the field format and try again.";
-      window.INVALID_DATE = "Please enter a valid date";
-      window.REQUIRED_MULTISELECT_MESSAGE = 'Please select at least 1 option';
-      window.translation = {
-        common: {
-          selectedList: '{quantity} list selected',
-          selectedLists: '{quantity} lists selected',
-          selectedOption: '{quantity} selected',
-          selectedOptions: '{quantity} selected',
-        }
-      };
-      var AUTOHIDE = Boolean(0);
-    </script>
-    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html>
