@@ -15,7 +15,7 @@ active_nav: outcomes
     <section class="cs-lede{% if page.hero_image and page.results %} cs-lede--split{% endif %}">
         {% if page.hero_image %}
         <figure class="cs-lede-media">
-            <img src="{{ page.hero_image | relative_url }}" alt="{{ page.hero_image_alt | default: page.title }}">
+            <img src="{{ page.hero_image | relative_url }}" alt="{{ page.hero_image_alt | default: page.title }}"{% if page.hero_image_width and page.hero_image_height %} width="{{ page.hero_image_width }}" height="{{ page.hero_image_height }}"{% endif %} loading="lazy">
         </figure>
         {% endif %}
         {% if page.results %}

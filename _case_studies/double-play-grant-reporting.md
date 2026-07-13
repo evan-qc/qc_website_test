@@ -8,6 +8,8 @@ summary: "We connected Double Play Community Center's Mindbody and Squarespace d
 description: "How Quantify helped Double Play Community Center, a Lewis County nonprofit, automate grant reporting - unifying Mindbody and Squarespace data into a Looker Studio dashboard that maps participants to townships and updates demographics in real time."
 
 hero_image: "/assets/case-studies/double-play-grant-reporting-hero.jpg"
+hero_image_width: 1296
+hero_image_height: 1159
 hero_image_alt: "Double Play Community Center's executive director shaking hands with the Quantify team in front of a Double Play program banner"
 
 results:

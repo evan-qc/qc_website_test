@@ -8,6 +8,8 @@ summary: "We redesigned and automated North Country Handymen's intake, invoicing
 description: "How Quantify helped North Country Handymen, an upstate New York construction and handyman company, automate intake, invoicing, and project tracking - saving 12–15 hours a week and collapsing manual paperwork into automated steps."
 
 hero_image: "/assets/case-studies/nch_logo.webp"
+hero_image_width: 2000
+hero_image_height: 1250
 hero_image_alt: "North Country Handymen logo"
 
 results:

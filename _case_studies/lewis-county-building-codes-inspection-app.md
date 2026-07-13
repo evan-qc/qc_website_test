@@ -8,6 +8,8 @@ summary: "We rebuilt 24 disconnected municipal spreadsheets as a single custom A
 description: "How Quantify replaced Lewis County Building Codes' 24 municipal spreadsheets with a custom Airtable inspection application - a relational data model, live dashboard, and automations managing 755 occupancies across 568 properties."
 
 hero_image: "/assets/case-studies/lewis-county-building-codes-inspection-app-hero.jpg"
+hero_image_width: 1600
+hero_image_height: 1067
 hero_image_alt: "A building codes inspector in a high-visibility vest filling out an inspection form on a clipboard over a set of property plans"
 
 results:

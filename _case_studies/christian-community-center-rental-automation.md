@@ -7,6 +7,8 @@ capabilities: [automation]
 summary: "We replaced CCC's manual, email-and-phone rental process with a hands-off automation built on Zapier, Trello, Google Calendar, and Twilio - reclaiming 7.5 hours of admin every month."
 description: "How Christian Community Center in Turin, NY automated its building-rental workflow with Zapier, Trello, and Twilio - saving 7.5 staff hours a month and eliminating forgotten access codes."
 hero_image: "/assets/case-studies/christian-community-center-rental-automation-hero.jpg"
+hero_image_width: 1110
+hero_image_height: 458
 hero_image_alt: "The CCC Rental Trello board, with cards moving through columns from rental request to completion"
 results:
   - stat: "7.5 hrs"
