@@ -1,19 +1,112 @@
 ---
 layout: default
-title: AI
-description: "Applying artificial intelligence to help businesses work smarter and move faster."
+title: Applied AI
+description: "AI that earns its keep, not AI for its own sake. We use AI to extract structure from documents, triage requests, and surface what deserves attention."
 active_nav: expertise
 ---
-<section class="hero hero-compact">
+<!-- Hero -->
+<section class="hero">
     <div class="hero-content">
-        <span class="eyebrow">Expertise</span>
-        <h1>Work smarter with <span class="accent-word">AI</span>.</h1>
-        <p class="lead">Placeholder page - details on our AI offering are coming soon.</p>
+        <span class="eyebrow">Applied AI</span>
+        <h1>AI that earns its keep.<br>Not AI <span class="accent-word">for its own sake</span>.</h1>
+        <p class="lead">We use AI to handle the work that used to require a person, but shouldn't: extracting structure from documents, triaging requests, and surfacing what deserves attention.</p>
+        <div class="hero-cta-row">
+            <a href="{{ '/get-started.html' | relative_url }}" class="btn btn-amber">Book a Consultation</a>
+        </div>
     </div>
 </section>
 
+<!-- The pain -->
 <section class="section">
     <div class="container-narrow">
-        <p class="muted">Content for this page is still in progress. This placeholder confirms the page, layout, and navigation are wired up correctly.</p>
+        <div class="section-heading">
+            <h2>Most "AI" is a chatbot bolted onto a broken process</h2>
+        </div>
+        <p class="lead" style="margin-bottom: 1.5rem;">You don't need another interface that talks back. You need the manual work off your desk:</p>
+        <div class="value-block">
+            <ul style="list-style: none; padding: 0; display: grid; gap: 0.6rem;">
+                <li style="padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent-warm); font-weight: 700;">→</span> Documents read, sorted, and re-keyed by hand</li>
+                <li style="padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent-warm); font-weight: 700;">→</span> Requests and tickets piling up faster than anyone can triage them</li>
+                <li style="padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent-warm); font-weight: 700;">→</span> Institutional knowledge that lives in one person's head</li>
+                <li style="padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent-warm); font-weight: 700;">→</span> The same report or summary written from scratch every week</li>
+                <li style="padding-left: 1.5rem; position: relative; color: var(--text-muted); font-style: italic;"><span style="position: absolute; left: 0; color: var(--accent-warm); font-weight: 700;">→</span> The list goes on…</li>
+            </ul>
+        </div>
+        <p style="text-align: center; margin-top: 2.5rem; font-size: 1.25rem; color: var(--text-heading); font-weight: 500;">Our job is knowing exactly where AI helps - <em>and telling you plainly when it doesn't</em>.</p>
+    </div>
+</section>
+
+<!-- 3-step process -->
+<section class="section" style="background: var(--bg-surface); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft);">
+    <div class="container">
+        <div class="section-heading">
+            <h2>How we work</h2>
+        </div>
+        <div class="steps">
+            <article class="step">
+                <div class="step-num">01</div>
+                <div>
+                    <h3>Find where judgment is repetitive</h3>
+                    <ul>
+                        <li>We look for the specific points where someone applies the same simple judgment call over and over: sorting a document, triaging a request, pulling a value out of a form</li>
+                        <li>That's where AI adds real leverage - not everywhere, and we'll say so when it isn't the right fit</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="step">
+                <div class="step-num">02</div>
+                <div>
+                    <h3>Design the guardrails first</h3>
+                    <ul>
+                        <li>We define exactly what the system can decide on its own, and what always routes back to a person</li>
+                        <li>Every deployment gets a human checkpoint built in from day one, not added after something goes wrong</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="step">
+                <div class="step-num">03</div>
+                <div>
+                    <h3>Build, test, and hand it off</h3>
+                    <ul>
+                        <li>We build and test against your real documents and real edge cases, not a demo dataset</li>
+                        <li>Your team ends up with a system they understand and can run themselves, not a black box they have to take on faith</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Tools -->
+<section class="section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Tools we work with</h2>
+        </div>
+        <p class="muted" style="margin-bottom: 2rem;">A diverse set of platforms, matched to the job.</p>
+        <div class="logo-strip" style="margin-bottom: 2.5rem;">
+            <div class="logo-chip">OpenAI</div>
+            <div class="logo-chip">Anthropic (Claude)</div>
+            <div class="logo-chip">Google Gemini</div>
+        </div>
+
+        <h3 style="margin-bottom: 1rem;">Plus the orchestration layer that connects them…</h3>
+        <div class="logo-strip">
+            <div class="logo-chip">LangChain</div>
+            <div class="logo-chip">n8n</div>
+            <div class="logo-chip">Make</div>
+            <div class="logo-chip">Zapier</div>
+        </div>
+
+        <p class="muted" style="margin-top: 2rem;">And often, no new platform at all - the AI already built into the tools you're paying for. We'll use what's already in your environment before we recommend adding something new.</p>
+    </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+    <div class="container">
+        <h2>Let's get started</h2>
+        <p>Schedule a free consultation today to see how our expert solutions can streamline your processes and drive lasting success.</p>
+        <a href="{{ '/get-started.html' | relative_url }}" class="btn btn-amber">Book Now</a>
     </div>
 </section>
