@@ -81,21 +81,25 @@
                 <div class="nav-item has-dropdown">
                     <button type="button" class="nav-trigger{% if page.active_nav == 'about' %} active{% endif %}" aria-haspopup="true" aria-expanded="false">About Us <span class="nav-caret" aria-hidden="true">▾</span></button>
                     <div class="dropdown">
-                        <a href="{{ '/our-why.html' | relative_url }}">Our Why</a>
-                        <a href="{{ '/the-3as.html' | relative_url }}">The "3 A's"</a>
-                        <a href="{{ '/what-to-expect.html' | relative_url }}">What to Expect</a>
-                        <a href="{{ '/about.html' | relative_url }}">Meet The Team</a>
+                        <div class="dropdown-inner">
+                            <a href="{{ '/our-why.html' | relative_url }}">Our Why</a>
+                            <a href="{{ '/the-3as.html' | relative_url }}">The "3 A's"</a>
+                            <a href="{{ '/what-to-expect.html' | relative_url }}">What to Expect</a>
+                            <a href="{{ '/about.html' | relative_url }}">Meet The Team</a>
+                        </div>
                     </div>
                 </div>
                 <div class="nav-item has-dropdown">
                     <button type="button" class="nav-trigger{% if page.active_nav == 'expertise' %} active{% endif %}" aria-haspopup="true" aria-expanded="false">Expertise <span class="nav-caret" aria-hidden="true">▾</span></button>
                     <div class="dropdown">
-                        <a href="{{ '/journal.html' | relative_url }}">Blog</a>
-                        <span class="dropdown-label">The 3 A's</span>
-                        <a href="{{ '/data-analytics.html' | relative_url }}" class="dropdown-sub">Analytics</a>
-                        <a href="{{ '/business-process-automation.html' | relative_url }}" class="dropdown-sub">Automation</a>
-                        <a href="{{ '/ai.html' | relative_url }}" class="dropdown-sub">AI</a>
-                        <a href="{{ '/technologies-partners.html' | relative_url }}">Technologies &amp; Partners</a>
+                        <div class="dropdown-inner">
+                            <a href="{{ '/journal.html' | relative_url }}">Blog</a>
+                            <span class="dropdown-label">The 3 A's</span>
+                            <a href="{{ '/data-analytics.html' | relative_url }}" class="dropdown-sub">Analytics</a>
+                            <a href="{{ '/business-process-automation.html' | relative_url }}" class="dropdown-sub">Automation</a>
+                            <a href="{{ '/ai.html' | relative_url }}" class="dropdown-sub">AI</a>
+                            <a href="{{ '/technologies-partners.html' | relative_url }}">Technologies &amp; Partners</a>
+                        </div>
                     </div>
                 </div>
                 <a href="{{ '/case-studies.html' | relative_url }}" class="nav-link{% if page.active_nav == 'outcomes' %} active{% endif %}">Client Outcomes</a>
