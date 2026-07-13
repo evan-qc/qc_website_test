@@ -1,0 +1,17 @@
+<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Outlook</title>
+<defs>
+<linearGradient id="outlookBody" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#62CDFF"/>
+<stop offset="45%" stop-color="#1B6EF3"/>
+<stop offset="100%" stop-color="#103F92"/>
+</linearGradient>
+<linearGradient id="outlookBadge" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#1DA0F2"/>
+<stop offset="100%" stop-color="#0A2767"/>
+</linearGradient>
+</defs>
+<path fill="url(#outlookBody)" d="M12,2.2 L18.6,7.3 C19.6,8.05 20.2,9.2 20.2,10.5 L20.2,17.8 C20.2,19 19.2,20 18,20 L6,20 C4.8,20 3.8,19 3.8,17.8 L3.8,10.5 C3.8,9.2 4.4,8.05 5.4,7.3 Z"/>
+<polygon points="9,7.3 14,7.3 9,17.5 4,17.5" fill="#0A3F8C" opacity="0.45"/>
+<circle cx="7.4" cy="17" r="4.7" fill="url(#outlookBadge)"/>
+<circle cx="7.4" cy="17" r="2.5" fill="none" stroke="#ffffff" stroke-width="1.7"/>
+</svg>
